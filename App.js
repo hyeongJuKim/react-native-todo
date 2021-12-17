@@ -14,6 +14,10 @@ const App = () => {
   const [todos, setTodos] = useState([]);
   const addTodo = useCallback(
     text => {
+      if (text.trim() === '') {
+        return;
+      }
+
       setTodos([
         ...todos,
         {id: Math.random(), textValue: text, checked: false},
