@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, StyleSheet, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 const TodoInsert = ({onAddTodo}) => {
@@ -22,6 +22,7 @@ const TodoInsert = ({onAddTodo}) => {
         placeholderTextColor={'#999'}
         value={newTodoItem}
         autoCorrect={false}
+        onEndEditing={addTodoHandler}
       />
       <View style={styles.button}>
         <Icon
