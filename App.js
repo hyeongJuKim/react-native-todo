@@ -1,31 +1,17 @@
 import React, {useMemo, useState, useCallback, useEffect} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  Alert,
-  Animated as functionSet,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Text, Alert} from 'react-native';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
 import EmptyTodo from './components/EmtypTodo';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
-  const addTodo = useCallback(
-    text => {
-      if (text.trim() === '') {
-        return;
-      }
-
-      setTodos([
-        ...todos,
-        {id: Math.random(), textValue: text, checked: false},
-      ]);
-    },
-    [todos],
-  );
+  const addTodo = text => {
+    if (text.trim() === '') {
+      return;
+    }
+    setTodos([...todos, {id: Math.random(), textValue: text, checked: false}]);
+  };
   const onRemove = useCallback(
     id => e => {
       Alert.alert('할일 삭제', '정말로 삭제하시겠습니까?', [
@@ -54,7 +40,6 @@ const App = () => {
       <Text style={styles.appTitle}>할 일 목록</Text>
       <View style={styles.card}>
         <TodoInsert onAddTodo={addTodo} />
-        <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />
         {todos.length === 0 ? (
           <EmptyTodo />
         ) : (
