@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 const TodoInsert = ({onAddTodo}) => {
@@ -24,15 +24,17 @@ const TodoInsert = ({onAddTodo}) => {
         autoCorrect={false}
         onEndEditing={addTodoHandler}
       />
-      <View style={styles.button}>
-        <Icon
-          name="pluscircle"
-          style={styles.addIcon}
-          size={30}
-          color="#3143e8"
-          onPress={addTodoHandler}
-        />
-      </View>
+      <TouchableOpacity activeOpacity={0.5}>
+        <View style={styles.button}>
+          <Icon
+            name="pluscircle"
+            style={styles.addIcon}
+            size={30}
+            color="#3143e8"
+            onPress={addTodoHandler}
+          />
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

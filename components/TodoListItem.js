@@ -6,7 +6,7 @@ const TodoListItem = ({textValue, id, checked, onToggle, onRemove}) => {
   console.log('TodoListItem: ' + textValue);
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPressOut={onToggle(id)}>
+      <TouchableOpacity onPressOut={onToggle(id)} activeOpacity={0.5}>
         <View style={styles.completeCircle}>
           {checked ? (
             <Icon name="checkbox-blank-circle" size={30} color="#3143e8" />
@@ -27,7 +27,7 @@ const TodoListItem = ({textValue, id, checked, onToggle, onRemove}) => {
         {textValue}
       </Text>
       <View style={styles.buttons}>
-        <TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.5}>
           <Text style={styles.buttonText} onPress={onRemove(id)}>
             <Icon name="delete" size={30} color="#e33507" />
           </Text>
@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 16,
     marginVertical: 20,
-    width: 100,
   },
   circle: {
     width: 30,
