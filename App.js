@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
+import EmptyTodo from './components/EmtypTodo';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
@@ -54,6 +55,11 @@ const App = () => {
       <View style={styles.card}>
         <TodoInsert onAddTodo={addTodo} />
         <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />
+        {todos.length === 0 ? (
+          <EmptyTodo />
+        ) : (
+          <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />
+        )}
       </View>
     </SafeAreaView>
   );
