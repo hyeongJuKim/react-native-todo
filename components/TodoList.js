@@ -22,7 +22,6 @@ const TodoList = ({todos, onToggle, onRemove}) => {
           <TodoListItem
             style={styles.list}
             id={item.id}
-            key={item.id}
             checked={item.checked}
             textValue={item.textValue}
             onToggle={onToggle}
