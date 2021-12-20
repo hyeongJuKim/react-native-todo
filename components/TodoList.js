@@ -9,27 +9,16 @@ import {
 import TodoListItem from './TodoListItem';
 
 const TodoList = ({todos, onToggle, onRemove}) => {
-  // console.log('TodoList ' + todos);
-  const onToggleHandle = useCallback(toggle => {
-    onToggle(toggle);
-  }, []);
-
   return (
     <ScrollView contentContainerStyle={styles.listContainer}>
-      <FlatList
-        data={todos}
-        renderItem={({item}) => (
-          <TodoListItem
-            style={styles.list}
-            id={item.id}
-            checked={item.checked}
-            textValue={item.textValue}
-            onToggle={onToggle}
-            onRemove={onRemove}
-          />
-        )}
-        keyExtractor={item => item.id.toString()}
-      />
+      {todos.map(todo => (
+        <TodoListItem
+          key={todo.id}
+          {...todo}
+          onToggle={onToggle}
+          onRemove={onRemove}
+        />
+      ))}
     </ScrollView>
   );
 };
