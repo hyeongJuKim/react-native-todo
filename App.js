@@ -6,12 +6,15 @@ import EmptyTodo from './components/EmtypTodo';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
-  const addTodo = text => {
+  const addTodo = useCallback(text => {
     if (text.trim() === '') {
       return;
     }
-    setTodos([...todos, {id: Math.random(), textValue: text, checked: false}]);
-  };
+    setTodos(list => [
+      ...todos,
+      {id: Math.random(), textValue: text, checked: false},
+    ]);
+  }, []);
   const onRemove = useCallback(
     id => e => {
       Alert.alert('할일 삭제', '정말로 삭제하시겠습니까?', [
@@ -22,7 +25,7 @@ const App = () => {
         {text: '아니오'},
       ]);
     },
-    [todos],
+    [],
   );
   const onToggle = useCallback(
     id => e => {
@@ -32,7 +35,7 @@ const App = () => {
         ),
       );
     },
-    [todos],
+    [],
   );
 
   return (
