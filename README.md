@@ -10,5 +10,5 @@
   
 ## uses
 - [X] Props, State
-- [ ] rendering optimization
+- [X] rendering optimization
 - [ ] AsyncStorage

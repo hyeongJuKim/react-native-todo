@@ -10,26 +10,29 @@ const App = () => {
     if (text.trim() === '') {
       return;
     }
-    setTodos(list => [
+    setTodos(todos => [
       ...todos,
       {id: Math.random(), textValue: text, checked: false},
     ]);
   }, []);
+
   const onRemove = useCallback(
     id => e => {
       Alert.alert('할일 삭제', '정말로 삭제하시겠습니까?', [
         {
           text: '예',
-          onPress: () => setTodos(todos.filter(todo => todo.id !== id)),
+          onPress: () =>
+            setTodos(todos => todos.filter(todo => todo.id !== id)),
         },
         {text: '아니오'},
       ]);
     },
     [],
   );
+
   const onToggle = useCallback(
     id => e => {
-      setTodos(
+      setTodos(todos =>
         todos.map(todo =>
           todo.id === id ? {...todo, checked: !todo.checked} : todo,
         ),
