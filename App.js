@@ -1,5 +1,12 @@
-import React, {useMemo, useState, useCallback, useEffect} from 'react';
-import {SafeAreaView, StyleSheet, View, Text, Alert} from 'react-native';
+import React, {useState, useCallback} from 'react';
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Text,
+  Alert,
+  TextInput,
+} from 'react-native';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
 import EmptyTodo from './components/EmtypTodo';
